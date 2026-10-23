@@ -97,6 +97,20 @@ From Cell 4 of `backtracking-internal-waves.ipynb`. This review used the **older
 **Team:** Jinal H. Bhavsar, Mayank Gupta, Sriram Rajesh Manwani
 **Mentors:** Dr. Meghna Patel, Pooja Pancholi
 
+## Saved result files
+
+These are the files the notebooks wrote, downloaded from Kaggle and committed unchanged. Folder names are as Kaggle exported them. Each `.virtual_documents/__notebook_source__.ipynb` is a source-only copy that Kaggle generated, not a notebook with outputs.
+
+| Folder | Produced by | Contents |
+|---|---|---|
+| [`Outputs/results (1)/`](<Outputs/results (1)>) | `improve-landing.ipynb` | `scene_geo_table.json` (47 scene geolocation transforms), `real_internal_wave_detections_v2.parquet` (the 3,125 kept v2 detections), `iw_demo_candidate_filenames.txt` (tiles with kept detections, highest confidence first) |
+| [`Outputs/results (2)/outputs/iw_improve/`](<Outputs/results (2)/outputs/iw_improve>) | `improving-iw-detector.ipynb` | `report.txt` (the same benchmark report as Cell 5), `results.csv` (per-run metrics and training settings), `history_*.csv` (per-epoch training history), `preds_*.parquet` (test-set predictions per run, with and without TTA), `comparison_chart.png`, `presentation_chart.png` |
+| [`Outputs/results (3)/`](<Outputs/results (3)>) | `backtracking-internal-waves.ipynb` | `tier1_fft_results.parquet` (Tier 1 estimates), `tier1_inspect.png` (12 inspection crops), `review_sheet_1-4.png` (the 48 crops shown in the manual review), `review_labels.csv` (the review template; its label columns are blank, and the filled-in labels used in Cell 4 are not in this folder). Older detector. |
+| [`Outputs/regional_map.png`](Outputs/regional_map.png) | — | Map of the 3,125 kept v2 detections over GEBCO depth. It shows where the scenes are, not hotspots. |
+| [`Evaluation/`](Evaluation) | dashboard | Dashboard screenshots (`testing(2–4).jpeg`), an annotated example tile (`tile_snapshot.jpg`) and the canyon-head case-study map (`testing(1).jpeg`). The 32 canyon-head detections in that map have **not** been checked by eye; treat them as candidates, not confirmed waves. |
+
 ## Not in this repository
 
-Model weights, raw or processed data (SAR tiles, `.SAFE` folders, parquet files), the presentation deck, the encoder and fusion code, and Tier 2.
+- **Model weights:** the 18 `.pth` checkpoints (95–173 MB each, about 2.5 GB in total) exceed GitHub's 100 MB file limit.
+- **Data:** SAR tiles, `.SAFE` folders and the filled-in manual review labels.
+- **Other material:** the presentation deck, the encoder and fusion code, and Tier 2.
