@@ -1,0 +1,98 @@
+==========================================================================================================
+INTERNAL-WAVE DETECTOR -- S1-IW-2023 held-out test set (74 images)
+==========================================================================================================
+mean over seeds ± sd across seeds   [95% bootstrap range over test images]
+
+                                                                    mAP@0.5                 mAP@0.5:0.95
+Faster R-CNN, original training                  85.02 ± 1.43 [ 79.8- 90.7]   57.75 ± 1.69 [ 52.7- 63.5]
+Faster R-CNN, original training + TTA            88.63 ± 1.42 [ 83.9- 93.4]   62.08 ± 1.11 [ 57.8- 67.1]
+Faster R-CNN, improved training (ours)           91.08 ± 0.66 [ 86.9- 95.0]   61.26 ± 1.85 [ 56.8- 66.2]
+Faster R-CNN, improved training (ours) + TTA     90.38 ± 0.35 [ 86.3- 94.4]   62.92 ± 0.86 [ 58.3- 68.1]
+Faster R-CNN v2, improved training (ours)        92.27 ± 1.13 [ 88.3- 96.1]   64.38 ± 2.14 [ 60.1- 69.1]
+Faster R-CNN v2, improved training (ours) + TTA  91.94 ± 1.35 [ 88.1- 95.6]   67.73 ± 0.49 [ 63.3- 72.7]
+RetinaNet (R50-FPN v2), same training            84.38 ± 1.77 [ 79.4- 89.8]   56.41 ± 2.28 [ 51.2- 62.4]
+RetinaNet (R50-FPN v2), same training + TTA      86.60 ± 0.36 [ 81.8- 91.6]   60.71 ± 1.33 [ 55.2- 66.7]
+FCOS (R50-FPN), same training                    89.48 ± 0.71 [ 85.2- 93.6]   64.04 ± 1.04 [ 59.1- 69.5]
+FCOS (R50-FPN), same training + TTA              85.07 ± 0.77 [ 79.2- 91.1]   53.35 ± 1.24 [ 48.2- 59.8]
+SSD300 (VGG16), same training                    89.84 ± 0.56 [ 85.4- 94.6]   57.46 ± 0.94 [ 52.5- 63.4]
+SSD300 (VGG16), same training + TTA              90.59 ± 0.15 [ 86.3- 95.1]   59.58 ± 0.62 [ 54.4- 65.7]
+
+Metric check on improved_v2_s0: fast mAP@0.5 93.57 vs pycocotools 93.57; fast mAP@0.5:0.95 66.74 vs pycocotools 66.74 (should agree within ~0.5)
+
+Individual runs:
+        run_id  best_epoch  val_ap50  test_ap50  test_ap50_95  test_ap50_tta
+   baseline_s0          20       NaN      85.33         57.58          88.90
+   improved_s0          20     90.52      90.32         60.04          90.28
+   baseline_s1          20       NaN      86.27         59.51          89.90
+   improved_s1          20     89.43      91.55         63.39          90.77
+   baseline_s2          20       NaN      83.46         56.14          87.10
+   improved_s2          20     89.21      91.37         60.35          90.08
+improved_v2_s0          18     87.22      93.57         66.74          92.97
+improved_v2_s1          22     87.49      91.71         62.56          90.41
+improved_v2_s2          22     87.95      91.52         63.83          92.43
+  retinanet_s0          18     83.65      84.19         56.09          86.50
+       fcos_s0          22     87.03      89.19         65.20          84.92
+        ssd_s0          24     83.52      90.47         58.53          90.61
+  retinanet_s1          20     82.50      86.23         58.84          87.00
+       fcos_s1          24     87.76      90.30         63.19          84.38
+        ssd_s1          22     83.53      89.40         57.07          90.44
+  retinanet_s2          14     78.31      82.70         54.31          86.30
+       fcos_s2          22     86.33      88.97         63.72          85.89
+        ssd_s2          20     84.97      89.66         56.77          90.73
+
+Better than our original training? (paired bootstrap of the difference;
+'yes' only if the whole 95% range is above 0)
+  mAP@0.5:
+    Faster R-CNN, original training + TTA     +3.50 (95%: +0.76 to +6.36) -> yes
+    Faster R-CNN, improved training (ours)    +5.88 (95%: +2.42 to +9.64) -> yes
+    Faster R-CNN, improved training (ours) + TTA  +5.21 (95%: +1.62 to +9.21) -> yes
+    Faster R-CNN v2, improved training (ours)  +7.06 (95%: +3.66 to +10.87) -> yes
+    Faster R-CNN v2, improved training (ours) + TTA  +6.74 (95%: +3.05 to +10.89) -> yes
+    RetinaNet (R50-FPN v2), same training     -0.61 (95%: -5.30 to +4.10) -> not distinguishable
+    RetinaNet (R50-FPN v2), same training + TTA  +1.56 (95%: -2.50 to +5.92) -> not distinguishable
+    FCOS (R50-FPN), same training             +4.25 (95%: +0.18 to +8.65) -> yes
+    FCOS (R50-FPN), same training + TTA       +0.19 (95%: -5.12 to +5.20) -> not distinguishable
+    SSD300 (VGG16), same training             +4.74 (95%: +0.75 to +9.27) -> yes
+    SSD300 (VGG16), same training + TTA       +5.47 (95%: +1.11 to +10.07) -> yes
+  mAP@0.5:0.95:
+    Faster R-CNN, original training + TTA     +4.23 (95%: +0.89 to +7.47) -> yes
+    Faster R-CNN, improved training (ours)    +3.47 (95%: -0.27 to +6.96) -> not distinguishable
+    Faster R-CNN, improved training (ours) + TTA  +5.11 (95%: +1.06 to +9.00) -> yes
+    Faster R-CNN v2, improved training (ours)  +6.56 (95%: +2.43 to +10.55) -> yes
+    Faster R-CNN v2, improved training (ours) + TTA  +9.86 (95%: +5.50 to +14.05) -> yes
+    RetinaNet (R50-FPN v2), same training     -1.27 (95%: -6.23 to +3.31) -> not distinguishable
+    RetinaNet (R50-FPN v2), same training + TTA  +2.92 (95%: -2.03 to +7.63) -> not distinguishable
+    FCOS (R50-FPN), same training             +6.24 (95%: +1.34 to +10.87) -> yes
+    FCOS (R50-FPN), same training + TTA       -4.11 (95%: -9.39 to +0.88) -> not distinguishable
+    SSD300 (VGG16), same training             -0.24 (95%: -5.00 to +4.30) -> not distinguishable
+    SSD300 (VGG16), same training + TTA       +1.86 (95%: -3.20 to +6.78) -> not distinguishable
+
+Our improved Faster R-CNN vs every other design, all trained and tested by us
+on the SAME data and split (no TTA; paired bootstrap of the difference):
+  mAP@0.5:
+    Faster R-CNN, improved training (ours)     vs Faster R-CNN, original training           +5.88 (95%: +2.42 to +9.64) -> better
+    Faster R-CNN, improved training (ours)     vs RetinaNet (R50-FPN v2), same training     +6.48 (95%: +2.92 to +10.27) -> better
+    Faster R-CNN, improved training (ours)     vs FCOS (R50-FPN), same training             +1.63 (95%: -0.51 to +3.91) -> not distinguishable
+    Faster R-CNN, improved training (ours)     vs SSD300 (VGG16), same training             +1.14 (95%: -1.41 to +3.92) -> not distinguishable
+    Faster R-CNN v2, improved training (ours)  vs Faster R-CNN, original training           +7.06 (95%: +3.66 to +10.87) -> better
+    Faster R-CNN v2, improved training (ours)  vs RetinaNet (R50-FPN v2), same training     +7.66 (95%: +3.78 to +11.93) -> better
+    Faster R-CNN v2, improved training (ours)  vs FCOS (R50-FPN), same training             +2.81 (95%: +0.44 to +5.45) -> better
+    Faster R-CNN v2, improved training (ours)  vs SSD300 (VGG16), same training             +2.32 (95%: +0.12 to +4.60) -> better
+  mAP@0.5:0.95:
+    Faster R-CNN, improved training (ours)     vs Faster R-CNN, original training           +3.47 (95%: -0.27 to +6.96) -> not distinguishable
+    Faster R-CNN, improved training (ours)     vs RetinaNet (R50-FPN v2), same training     +4.75 (95%: +0.81 to +8.71) -> better
+    Faster R-CNN, improved training (ours)     vs FCOS (R50-FPN), same training             -2.76 (95%: -5.71 to +0.17) -> not distinguishable
+    Faster R-CNN, improved training (ours)     vs SSD300 (VGG16), same training             +3.71 (95%: +0.31 to +7.22) -> better
+    Faster R-CNN v2, improved training (ours)  vs Faster R-CNN, original training           +6.56 (95%: +2.43 to +10.55) -> better
+    Faster R-CNN v2, improved training (ours)  vs RetinaNet (R50-FPN v2), same training     +7.83 (95%: +3.89 to +11.92) -> better
+    Faster R-CNN v2, improved training (ours)  vs FCOS (R50-FPN), same training             +0.32 (95%: -2.91 to +3.56) -> not distinguishable
+    Faster R-CNN v2, improved training (ours)  vs SSD300 (VGG16), same training             +6.79 (95%: +3.13 to +10.58) -> better
+
+Published numbers -- CONTEXT ONLY, not compared:
+  Paper's numbers are from a different evaluation set (S1-IW-2023 + 1,133 unreleased images, random 8:2 re-split) -- shown for context, not compared.
+  Paper: rFaster R-CNN (their model)     mAP@0.5  91.20   mAP@0.5:0.95  58.80
+  Paper: Faster R-CNN (R50 + FPN)        mAP@0.5  87.17   mAP@0.5:0.95  55.10
+  Paper: YOLOv9                          mAP@0.5  87.80   mAP@0.5:0.95   n/r
+  Paper: RetinaNet + FPN                 mAP@0.5  84.86   mAP@0.5:0.95   n/r
+  Paper: SSD                             mAP@0.5  84.64   mAP@0.5:0.95   n/r
+  Paper: YOLOv3                          mAP@0.5  71.50   mAP@0.5:0.95   n/r
