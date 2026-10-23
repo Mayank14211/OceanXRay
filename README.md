@@ -109,8 +109,14 @@ These are the files the notebooks wrote, downloaded from Kaggle and committed un
 | [`Outputs/regional_map.png`](Outputs/regional_map.png) | — | Map of the 3,125 kept v2 detections over GEBCO depth. It shows where the scenes are, not hotspots. |
 | [`Evaluation/`](Evaluation) | dashboard | Dashboard screenshots (`testing(2–4).jpeg`), an annotated example tile (`tile_snapshot.jpg`) and the canyon-head case-study map (`testing(1).jpeg`). The 32 canyon-head detections in that map have **not** been checked by eye; treat them as candidates, not confirmed waves. |
 
+## Model weights
+
+The checkpoints are too large to store in the repository (GitHub's file limit is 100 MB), so they are hosted separately:
+
+- **Dashboard checkpoint:** [`ckpt_improved_v2_s2.pth`](https://github.com/Mayank14211/OceanXRay/releases/download/iw-detector-v2-s2/ckpt_improved_v2_s2.pth), attached to the [`iw-detector-v2-s2` release](https://github.com/Mayank14211/OceanXRay/releases/tag/iw-detector-v2-s2). It is 173 MB, with sha256 `a56dae9e0b6d2d17d222f7e81c036acd11dc62862d7a81c9783312afb0665f44`. This is Faster R-CNN v2 with improved training, seed-2 run: 91.52 mAP@0.5 and 63.83 mAP@0.5:0.95 on the test split.
+- **All 18 benchmark checkpoints** (6 recipes × 3 seeds, 95–173 MB each): on Kaggle at [mayankgupta005/iw-detector-variants](https://www.kaggle.com/models/mayankgupta005/iw-detector-variants).
+
 ## Not in this repository
 
-- **Model weights:** the 18 `.pth` checkpoints (95–173 MB each, about 2.5 GB in total) exceed GitHub's 100 MB file limit.
 - **Data:** SAR tiles, `.SAFE` folders and the filled-in manual review labels.
 - **Other material:** the presentation deck, the encoder and fusion code, and Tier 2.
