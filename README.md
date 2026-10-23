@@ -99,13 +99,13 @@ From Cell 4 of `backtracking-internal-waves.ipynb`. This review used the **older
 
 ## Saved result files
 
-These are the files the notebooks wrote, downloaded from Kaggle and committed unchanged. Folder names are as Kaggle exported them. Each `.virtual_documents/__notebook_source__.ipynb` is a source-only copy that Kaggle generated, not a notebook with outputs.
+These are the files the notebooks wrote, downloaded from Kaggle and committed unchanged. Folder names are as Kaggle exported them.
 
 | Folder | Produced by | Contents |
 |---|---|---|
 | [`Output/results (1)/`](<Output/results (1)>) | `improve-landing.ipynb` | `scene_geo_table.json` (47 scene geolocation transforms), `real_internal_wave_detections_v2.parquet` (the 3,125 kept v2 detections), `iw_demo_candidate_filenames.txt` (tiles with kept detections, highest confidence first) |
 | [`Output/results (2)/outputs/iw_improve/`](<Output/results (2)/outputs/iw_improve>) | `improving-iw-detector.ipynb` | `report.txt` (the same benchmark report as Cell 5), `results.csv` (per-run metrics and training settings), `history_*.csv` (per-epoch training history), `preds_*.parquet` (test-set predictions per run, with and without TTA), `comparison_chart.png`, `presentation_chart.png` |
-| [`Output/results (3)/`](<Output/results (3)>) | `backtracking-internal-waves.ipynb` | `tier1_fft_results.parquet` (Tier 1 estimates), `tier1_inspect.png` (12 inspection crops), `review_sheet_1-4.png` (the 48 crops shown in the manual review), `review_labels.csv` (the review template; its label columns are blank, and the filled-in labels used in Cell 4 are not in this folder). Older detector. |
+| [`Output/results (3)/`](<Output/results (3)>) | `backtracking-internal-waves.ipynb` | `tier1_fft_results.parquet` (Tier 1 estimates), `tier1_inspect.png` (12 inspection crops). Older detector. The manual review results are in Cell 4 of the notebook. |
 | [`Output/regional_map.png`](Output/regional_map.png) | — | Map of the 3,125 kept v2 detections over GEBCO depth. It shows where the scenes are, not hotspots. |
 | [`Evaluation/`](Evaluation) | dashboard | Dashboard screenshots (`testing(2–4).jpeg`), an annotated example tile (`tile_snapshot.jpg`) and the canyon-head case-study map (`testing(1).jpeg`). The 32 canyon-head detections in that map have **not** been checked by eye; treat them as candidates, not confirmed waves. |
 
