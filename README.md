@@ -95,7 +95,6 @@ From Cell 4 of `backtracking-internal-waves.ipynb`. This review used the **older
 - **Natural Earth** place names, used by the dashboard
 
 **Team:** Jinal H. Bhavsar, Mayank Gupta, Sriram Rajesh Manwani
-**Mentors:** Dr. Meghna Patel, Pooja Pancholi
 
 ## Saved result files
 
